@@ -1,0 +1,9 @@
+$primary-color: #fff3db;
+$danger-color: rgb(255, 180, 180);
+
+@mixin FlexCenter($direction: row, $justify: center, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}

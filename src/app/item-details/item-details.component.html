@@ -1,1 +1,103 @@
-<p>item-details works!</p>
+<div class="itemBackdrop">
+
+    <div class="item" [ngClass]="{'item__reaction': itemDetails.isReaction}">
+
+        <!-- <p>item-details works!</p> -->
+
+        <div class="item__details">
+
+            <mat-accordion>
+
+                <mat-expansion-panel *ngFor="let item of itemDetails.foodItemsArray; let idx = index"
+                    (opened)="toggleIngredients(idx)" (closed)="toggleIngredients(idx)">
+
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <div class="textIcon">
+                                {{item.name}} <mat-icon class="clickable" *ngIf="isEditable"
+                                    (click)="deleteFoodItem(idx)">delete</mat-icon>
+                            </div>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+
+                    <mat-list>
+
+                        <div *ngFor="let ingredient of item.ingredients; let idxx = index">
+                            <mat-list-item>
+                                <div class="textIcon">
+                                    {{ingredient}} <mat-icon class="clickable" *ngIf="isEditable"
+                                        (click)="deleteIngredient(idx, idxx)">delete</mat-icon>
+                                </div>
+                            </mat-list-item>
+                            <mat-divider></mat-divider>
+                        </div>
+
+                        <div *ngIf="!item.ingredients && !isEditable">
+                            <mat-list-item>Nothing to Display</mat-list-item>
+                            <mat-divider></mat-divider>
+                        </div>
+
+                        <div *ngIf="isEditable">
+
+                            <form (submit)="addIngredient()">
+                                <mat-form-field class="newItem">
+                                    <mat-label>Add Ingredient</mat-label>
+                                    <input matInput type="text" placeholder="New Ingredient" [(ngModel)]="newIngredient"
+                                        [ngModelOptions]="{standalone: true}">
+                                </mat-form-field>
+                            </form>
+                        </div>
+
+                    </mat-list>
+
+                </mat-expansion-panel>
+
+                <div *ngIf="isEditable">
+
+                    <form (submit)="addFoodItem()">
+                        <mat-form-field class="newItem">
+                            <mat-label>Add Food Item</mat-label>
+                            <input matInput placeholder="New Food Item" [(ngModel)]="newFoodItem"
+                                [ngModelOptions]="{standalone: true}">
+                        </mat-form-field>
+                    </form>
+                </div>
+
+            </mat-accordion>
+
+        </div>
+
+        <div class="item__options">
+
+            <div class="item__optionsTop">
+
+                <p class="date">
+                    {{ itemDetails.date | date}}
+                </p>
+
+                <p class="allergy">
+                    <mat-slide-toggle (change)="toggleReaction()" [checked]="itemDetails.isReaction"
+                        [disabled]="!isEditable">Allergic Rxn</mat-slide-toggle>
+                </p>
+
+            </div>
+
+            <div class="item__optionsBottom" *ngIf="!isEditable">
+
+                <button mat-raised-button (click)="onEdit()"> Edit Details </button>
+                <button mat-raised-button (click)="onClose()"> Close </button>
+
+            </div>
+
+            <div class="item__optionsBottom" *ngIf="isEditable">
+
+                <button mat-raised-button (click)="onSave()"> Save </button>
+                <button mat-raised-button (click)="onCancel()"> Cancel </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

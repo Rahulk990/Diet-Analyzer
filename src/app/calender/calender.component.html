@@ -1,1 +1,33 @@
-<p>calender works!</p>
+<div class="calender" #calender>
+
+    <!-- <div class="calender__topBar">
+
+    </div> -->
+
+    <div class="calender__itemContainer">
+
+        <div class="calender__item" *ngFor="let item of this.itemService.itemsArray; let idx = index" [ngClass]="{'item__reactive':item.isReaction}"
+            (click)="onItemClick(idx)">
+
+            <div class="item__content">
+
+                <div class="item__addMore" *ngIf="!item.foodItemsArray">
+                    <p>+</p>
+                </div>
+
+                <div class="item__foodItems" *ngIf="item.foodItemsArray">
+                    <p *ngFor="let food of item.foodItemsArray | truncate">{{ food.name }}</p>
+                </div>
+
+            </div>
+
+            <p class="item__date">
+                {{ item.date | date }}
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+<app-item-details *ngIf="itemOpen !== -1" (close)="onCloseItemDetails()" [itemIndex]="itemOpen"></app-item-details>

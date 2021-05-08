@@ -1,0 +1,119 @@
+@import "../shared/variables";
+
+.itemBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  height: 100vh;
+  width: 100vw;
+
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.item {
+  @include FlexCenter();
+
+  position: fixed;
+  bottom: 0;
+  width: calc(100vw - 40px);
+  height: 70vh;
+  padding: 20px;
+
+  border-radius: 25px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  opacity: 95%;
+  background-color: $primary-color;
+
+  &.item__reaction {
+    background-color: $danger-color;
+  }
+}
+
+.item__details {
+  @include FlexCenter(
+    $direction: row,
+    $justify: flex-start,
+    $align: flex-start
+  );
+  height: 100%;
+  flex: 2;
+  flex-basis: 200px;
+  padding: 10px;
+
+  overflow-y: auto;
+  position: relative;
+
+  .mat-accordion {
+    width: 100%;
+
+    .mat-content {
+      justify-content: space-between;
+    }
+
+    .newItem {
+      margin-top: 10px;
+      margin-left: 10px;
+    }
+
+    .textIcon {
+      @include FlexCenter($justify: space-between);
+      width: 100%;
+    }
+
+    .mat-form-field {
+      width: 90%;
+    }
+  }
+}
+
+.item__options {
+  @include FlexCenter($direction: column, $justify: space-between);
+
+  height: 100%;
+  flex: 1;
+  flex-basis: 100px;
+
+  &Top {
+    @include FlexCenter($direction: column);
+    flex-wrap: wrap;
+    width: 100%;
+
+    .date {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .allergy {
+      margin-top: 10px;
+    }
+  }
+
+  &Bottom {
+    @include FlexCenter($justify: space-between);
+    flex-wrap: wrap;
+    width: 100%;
+
+    button {
+      flex: 1;
+      margin: 10px 5px;
+      cursor: pointer;
+      padding: 10px;
+      border-radius: 5px;
+
+      font-size: 1rem;
+      font-weight: 500;
+      min-width: 100px;
+
+      &:hover {
+        background-color: #e6e6e6;
+      }
+    }
+  }
+}
+
+.clickabe {
+  z-index: 10;
+  cursor: pointer;
+}

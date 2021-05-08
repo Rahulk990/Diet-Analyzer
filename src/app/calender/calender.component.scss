@@ -1,0 +1,78 @@
+@import "../shared/variables";
+
+.calender {
+  height: calc(100vh - 100px);
+  overflow: auto;
+  flex: 1;
+  padding: 20px;
+
+  #{&}__itemContainer {
+    @include FlexCenter($justify: flex-start, $align: flex-start);
+
+    width: 100%;
+    flex-wrap: wrap;
+    position: relative;
+
+    .calender__item {
+      @include FlexCenter($direction: column);
+
+      flex: 0 1 auto;
+      min-height: 100px;
+      min-width: 100px;
+      background-color: $primary-color;
+      margin: 10px 10px;
+      padding: 20px;
+      border-radius: 30px;
+      cursor: pointer;
+
+      .item__content {
+        @include FlexCenter();
+        flex: 1;
+        margin-bottom: 10px;
+        width: 100%;
+
+        .item__addMore {
+          @include FlexCenter();
+
+          height: 70px;
+          width: 70px;
+          font-size: 30px;
+
+          color: darken($primary-color, 30%);
+          background-color: darken($primary-color, 5%);
+          border-radius: 20px;
+        }
+
+        .item__foodItems {
+          width: 100%;
+          margin-bottom: auto;
+          margin-right: auto;
+
+          font-size: 14px;
+          font-weight: 500;
+          color: darken($primary-color, 30%);
+        }
+      }
+
+      .item__date {
+        // margin-top: auto;
+        margin-left: auto;
+        font-size: 10px;
+        font-weight: 500;
+      }
+    }
+
+    .calender__item.item__reactive {
+      background-color: $danger-color;
+
+      .item__content .item__addMore {
+        color: darken($danger-color, 30%);
+        background-color: darken($danger-color, 5%);
+      }
+
+      .item__content .item__foodItems {
+        color: darken($danger-color, 30%);
+      }
+    }
+  }
+}
