@@ -60,6 +60,14 @@
     .textIcon {
       @include FlexCenter($justify: space-between);
       width: 100%;
+
+      .textIconLeft {
+        @include FlexCenter($justify: flex-start, $align: flex-end);
+
+        p {
+          margin-left: 10px;
+        }
+      }
     }
 
     .mat-form-field {

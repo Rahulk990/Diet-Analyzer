@@ -1,15 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { ItemModelService } from '../shared/services/item-model.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  searchFilter: string = '';
 
-  constructor() { }
+  constructor(private itemService: ItemModelService) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  onSubmit(): void {
+    this.itemService.searchEmitter.next(this.searchFilter);
   }
 
 }

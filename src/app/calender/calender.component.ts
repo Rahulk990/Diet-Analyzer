@@ -2,9 +2,11 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  OnDestroy,
   OnInit,
   ViewChild,
 } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ItemModelService, Item } from '../shared/services/item-model.service';
 
 @Component({
@@ -12,51 +14,19 @@ import { ItemModelService, Item } from '../shared/services/item-model.service';
   templateUrl: './calender.component.html',
   styleUrls: ['./calender.component.scss'],
 })
-export class CalenderComponent implements OnInit, AfterViewInit {
-  // itemsArray: Item[] = [
-  //   {
-  //     date: new Date(),
-  //     isReaction: true,
-  //   },
-  //   {
-  //     date: new Date(),
-  //     foodItemsArray: [
-  //       { name: 'Egg And Butter and Nasd' },
-  //       { name: 'Milk' },
-  //       { name: 'Bread' },
-  //       { name: 'Milk' },
-  //       { name: 'Bread' },
-  //     ],
-  //     isReaction: true,
-  //   },
-  //   {
-  //     date: new Date(),
-  //     isReaction: false,
-  //   },
-  //   {
-  //     date: new Date(),
-  //     foodItemsArray: [
-  //       { name: 'Egg And Butter and Nasd' },
-  //       { name: 'Milk' },
-  //       { name: 'Bread' },
-  //       { name: 'Milk' },
-  //       { name: 'Bread' },
-  //     ],
-  //     isReaction: false,
-  //   },
-  //   {
-  //     date: new Date(),
-  //     isReaction: true,
-  //   },
-  // ];
-
+export class CalenderComponent implements OnInit, AfterViewInit, OnDestroy {
   itemOpen: number = -1;
   @ViewChild('calender') private divCalender: ElementRef | any;
+  searchFilter: string = '';
+  searchSub: Subscription | any;
 
   constructor(public itemService: ItemModelService) {}
 
   ngOnInit(): void {
     this.itemService.generateCalender();
+    this.searchSub = this.itemService.searchEmitter.subscribe((filter) => {
+      this.searchFilter = filter;
+    });
   }
 
   ngAfterViewInit(): void {
@@ -70,6 +40,9 @@ export class CalenderComponent implements OnInit, AfterViewInit {
 
   onCloseItemDetails(): void {
     this.itemOpen = -1;
-    console.log(this.itemService.itemsArray)
+  }
+
+  ngOnDestroy(): void {
+    this.searchSub.unsubscribe();
   }
 }

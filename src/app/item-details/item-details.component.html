@@ -14,8 +14,14 @@
                     <mat-expansion-panel-header>
                         <mat-panel-title>
                             <div class="textIcon">
-                                {{item.name}} <mat-icon class="clickable" *ngIf="isEditable"
-                                    (click)="deleteFoodItem(idx)">delete</mat-icon>
+
+                                <div class="textIconLeft">
+                                    <mat-icon>fastfood</mat-icon>
+                                    <p>{{item.name}}</p>
+                                </div>
+
+                                <mat-icon class="clickable" *ngIf="isEditable" (click)="deleteFoodItem(idx)">delete
+                                </mat-icon>
                             </div>
                         </mat-panel-title>
                     </mat-expansion-panel-header>
@@ -25,7 +31,13 @@
                         <div *ngFor="let ingredient of item.ingredients; let idxx = index">
                             <mat-list-item>
                                 <div class="textIcon">
-                                    {{ingredient}} <mat-icon class="clickable" *ngIf="isEditable"
+
+                                    <div class="textIconLeft">
+                                        <mat-icon>local_dining</mat-icon>
+                                        <p>{{ingredient}}</p>
+                                    </div>
+
+                                    <mat-icon class="clickable" *ngIf="isEditable"
                                         (click)="deleteIngredient(idx, idxx)">delete</mat-icon>
                                 </div>
                             </mat-list-item>
@@ -39,7 +51,7 @@
 
                         <div *ngIf="isEditable">
 
-                            <form (submit)="addIngredient()">
+                            <form (submit)="addIngredient(idx)">
                                 <mat-form-field class="newItem">
                                     <mat-label>Add Ingredient</mat-label>
                                     <input matInput type="text" placeholder="New Ingredient" [(ngModel)]="newIngredient"

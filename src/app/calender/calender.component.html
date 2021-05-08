@@ -6,7 +6,8 @@
 
     <div class="calender__itemContainer">
 
-        <div class="calender__item" *ngFor="let item of this.itemService.itemsArray; let idx = index" [ngClass]="{'item__reactive':item.isReaction}"
+        <div class="calender__item" *ngFor="let item of this.itemService.itemsArray; let idx = index"
+            [ngClass]="{'item__reactive':item.isReaction, 'selected':(item | contains: searchFilter)}"
             (click)="onItemClick(idx)">
 
             <div class="item__content">

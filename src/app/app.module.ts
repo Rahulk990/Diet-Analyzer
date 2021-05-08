@@ -17,6 +17,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatButtonModule } from '@angular/material/button';
+import { ContainsPipe } from './shared/pipes/contains.pipe';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { MatButtonModule } from '@angular/material/button';
     HeaderComponent,
     ItemDetailsComponent,
     TruncatePipe,
+    ContainsPipe,
   ],
   imports: [
     BrowserModule,

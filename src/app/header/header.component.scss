@@ -23,6 +23,7 @@
   #{&}__search {
     flex: 1;
     margin-left: 10px;
+    text-align: center;
 
     input {
       padding: 5px;
@@ -32,10 +33,11 @@
       border-radius: 10px;
 
       height: 30px;
-      font-size: 17px;
+      font-size: 15px;
       width: 80%;
-      
+
       background-color: darken($primary-color, 5%);
+      outline: none;
     }
   }
 }

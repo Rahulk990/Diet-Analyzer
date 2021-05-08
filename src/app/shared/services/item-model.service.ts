@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 export interface FoodItems {
   name: string;
@@ -16,6 +17,7 @@ export interface Item {
 })
 export class ItemModelService {
   itemsArray: Item[] = [];
+  searchEmitter = new Subject<string>();
 
   constructor() {}
 

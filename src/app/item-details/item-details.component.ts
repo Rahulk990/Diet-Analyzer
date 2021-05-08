@@ -1,11 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnDestroy,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Item, ItemModelService } from '../shared/services/item-model.service';
 
@@ -14,7 +7,7 @@ import { Item, ItemModelService } from '../shared/services/item-model.service';
   templateUrl: './item-details.component.html',
   styleUrls: ['./item-details.component.scss'],
 })
-export class ItemDetailsComponent implements OnInit, OnDestroy {
+export class ItemDetailsComponent implements OnInit {
   @Input() itemIndex: number | any;
   @Output() close: EventEmitter<any> = new EventEmitter();
   itemDetails: Item | any;
@@ -55,6 +48,7 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
     this.isEditable = false;
     if (this.originalItem !== this.itemDetails) {
       this.isModified = true;
+      this.itemService.updateItem(this.itemDetails, this.itemIndex);
     }
     this.originalItem = null;
   }
@@ -81,19 +75,15 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
     }
   }
 
-  addIngredient(): void {
-    if (
-      !this.itemDetails.foodItemsArray[this.showItemIngredients].ingredients
-    ) {
-      this.itemDetails.foodItemsArray[
-        this.showItemIngredients
-      ].ingredients = [];
+  addIngredient(index: number): void {
+    if (!this.itemDetails.foodItemsArray[index].ingredients) {
+      this.itemDetails.foodItemsArray[index].ingredients = [];
     }
 
     if (this.newIngredient.length > 0) {
-      this.itemDetails.foodItemsArray[
-        this.showItemIngredients
-      ].ingredients.push(this.newIngredient);
+      this.itemDetails.foodItemsArray[index].ingredients.push(
+        this.newIngredient
+      );
       this.newIngredient = '';
       this.snackBar.open('New Ingredient Added', 'Ok', { duration: 1000 });
     }
@@ -114,11 +104,5 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
 
   toggleReaction(): void {
     this.itemDetails.isReaction = !this.itemDetails.isReaction;
-  }
-
-  ngOnDestroy(): void {
-    if (this.isModified) {
-      this.itemService.updateItem(this.itemDetails, this.itemIndex);
-    }
   }
 }
