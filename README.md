@@ -1,5 +1,5 @@
 # Diet Analyzer
-Diet Analyzer is an application that can be used by people which have some allergic reactions due to some food items and they struggle in detecting those items. Using this application, they can keep track of what they eat daily and when the allergic reaction occurs so that the patterns can be anaylzed to point out the appropirate food item that causes allergic reaction. Support this project by leaving a :star:
+Diet Analyzer is an application that can be used by people which have some allergic reactions due to some food items and they struggle in detecting those items. Using this application, they can keep track of what they eat daily and when the allergic reaction occurs so that the patterns can be anaylzed to point out the appropirate food item that causes allergic reaction
 
 ## _Technology Used_
 - Sass
