@@ -7,7 +7,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ItemModelService, Item } from '../shared/services/item-model.service';
+import { ItemModelService } from '../shared/services/item-model.service';
 
 @Component({
   selector: 'app-calender',

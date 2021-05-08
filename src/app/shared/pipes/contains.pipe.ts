@@ -16,17 +16,17 @@ export class ContainsPipe implements PipeTransform {
       return false;
     }
 
-    for (let i = 0; i < value.foodItemsArray.length; i++) {
-      if (value.foodItemsArray[i].name.includes(filter)) {
+    for (let foodItem of value.foodItemsArray) {
+      if (foodItem.name.includes(filter)) {
         result = true;
       }
 
-      if (!value.foodItemsArray[i].ingredients) {
+      if (!foodItem.ingredients) {
         continue;
       }
 
-      for (let j = 0; j < value.foodItemsArray[i].ingredients.length; j++) {
-        if (value.foodItemsArray[i].ingredients[j].includes(filter)) {
+      for (let ingredient of foodItem.ingredients) {
+        if (ingredient.includes(filter)) {
           result = true;
         }
       }
