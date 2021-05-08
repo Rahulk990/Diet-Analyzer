@@ -1,27 +1,31 @@
-# DietAnalyzer
+# Diet Analyzer
+Diet Analyzer is an application that can be used by people which have some allergic reactions due to some food items and they struggle in detecting those items. Using this application, they can keep track of what they eat daily and when the allergic reaction occurs so that the patterns can be anaylzed to point out the appropirate food item that causes allergic reaction. Support this project by leaving a :star:
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.11.
+## _Technology Used_
+- Sass
+- Angular
+- ElectronJs
+- TypeScript
 
-## Development server
+## _Application Preview_
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+<img src="/images/light.jpg" height="400"/>  
+<br />
+<img src="/images/dark.jpg" height="400"/>
 
-## Code scaffolding
+## _Usage_
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## _Future Scope_
+- Feature to analyze the daily diets of people
+- Using ML to auto-recognize the pattern and point out the food item
+- Suggesting diet tips to the people considering what nutrients they are taking and what they are lacking  
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+---
+> ## F.A.Q
+>__Q: Why did you make this?__\
+__A__: I just started with the Angular and ElectronJs. This simple project helped me in understanding them better.\
+\
+>__Q: Which features of Angular have you used in this project?__\
+>__A__: I have used most of the features like, Routing, Pipes, Services, Angular-Material etc.
+---
