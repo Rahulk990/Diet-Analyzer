@@ -24,14 +24,12 @@ export class ItemDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.itemDetails = JSON.parse(
-      JSON.stringify(this.itemService.itemsArray[this.itemIndex])
-    );
+    this.itemDetails = { ...this.itemService.itemsArray[this.itemIndex] };
   }
 
   onEdit(): void {
     this.isEditable = true;
-    this.originalItem = JSON.parse(JSON.stringify(this.itemDetails));
+    this.originalItem = { ...this.itemDetails };
   }
 
   onClose(): void {
@@ -40,7 +38,7 @@ export class ItemDetailsComponent implements OnInit {
 
   onCancel(): void {
     this.isEditable = false;
-    this.itemDetails = JSON.parse(JSON.stringify(this.originalItem));
+    this.itemDetails = { ...this.originalItem };
     this.originalItem = null;
   }
 

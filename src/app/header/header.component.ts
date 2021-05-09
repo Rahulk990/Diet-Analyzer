@@ -13,8 +13,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onSubmit(): void {
-    this.itemService.searchEmitter.next(this.searchFilter);
+  onSubmit(event: string): void {
+    this.itemService.searchEmitter.next(event);
   }
-
 }

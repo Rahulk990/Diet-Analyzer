@@ -6,9 +6,8 @@
     </div>
 
     <div class="header__search">
-        <form (submit)="onSubmit()">
-            <input type="text" placeholder="Search Food Item or Ingredient" [(ngModel)]="searchFilter" [ngModelOptions]="{standalone: true}">
-        </form>
+        <input type="text" placeholder="Search Food Item or Ingredient" [(ngModel)]="searchFilter"
+            (ngModelChange)="onSubmit($event)">
     </div>
 
 </div>

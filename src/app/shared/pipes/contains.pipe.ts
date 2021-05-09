@@ -11,13 +11,14 @@ export class ContainsPipe implements PipeTransform {
     }
 
     let result: boolean = false;
+    filter = filter.toLowerCase();
 
     if (!value.foodItemsArray) {
       return false;
     }
 
     for (let foodItem of value.foodItemsArray) {
-      if (foodItem.name.includes(filter)) {
+      if (foodItem.name.toLowerCase().includes(filter)) {
         result = true;
       }
 

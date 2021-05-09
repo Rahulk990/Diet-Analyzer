@@ -31,12 +31,12 @@ export class ItemModelService {
     for (let i = 0; i < days; i++) {
       this.itemsArray.push({
         date: new Date(2021, 0, i + 1),
-        isReaction: false
+        isReaction: false,
       });
     }
   };
 
   updateItem(item: Item, index: number): void {
-    this.itemsArray[index] = JSON.parse(JSON.stringify(item))
+    this.itemsArray[index] = { ...item };
   }
 }

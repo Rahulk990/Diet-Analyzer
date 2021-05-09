@@ -18,6 +18,22 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatButtonModule } from '@angular/material/button';
 import { ContainsPipe } from './shared/pipes/contains.pipe';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { RouterModule } from '@angular/router';
+import { AuthService } from './shared/services/auth.service';
+
+const routePaths = [
+  {
+    path: '',
+    component: LandingPageComponent,
+    
+  },
+  {
+    path: 'dashboard',
+    component: CalenderComponent,
+    canActivate: [AuthService]
+  },
+];
 
 @NgModule({
   declarations: [
@@ -27,6 +43,7 @@ import { ContainsPipe } from './shared/pipes/contains.pipe';
     ItemDetailsComponent,
     TruncatePipe,
     ContainsPipe,
+    LandingPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +57,7 @@ import { ContainsPipe } from './shared/pipes/contains.pipe';
     MatSnackBarModule,
     MatSlideToggleModule,
     MatButtonModule,
+    RouterModule.forRoot(routePaths),
   ],
   providers: [],
   bootstrap: [AppComponent],
