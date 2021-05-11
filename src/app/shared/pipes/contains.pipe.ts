@@ -27,7 +27,7 @@ export class ContainsPipe implements PipeTransform {
       }
 
       for (let ingredient of foodItem.ingredients) {
-        if (ingredient.includes(filter)) {
+        if (ingredient.toLowerCase().includes(filter)) {
           result = true;
         }
       }
