@@ -1,6 +1,5 @@
 # Diet Analyzer
-[Windows](https://drive.google.com/file/d/1gyhzuyFO7h5PN0ijF7ozJkBLHiaNlc0S/view?usp=sharing)
-Diet Analyzer is an application that can be used by people which have some allergic reactions due to some food items and they struggle in detecting those items. Using this application, they can keep track of what they eat daily and when the allergic reaction occurs so that the patterns can be anaylzed to point out the appropirate food item that causes allergic reaction
+Diet Analyzer is an application that can be used by people which have some allergic reactions due to some food items and they struggle in detecting those items. Using this application, they can keep track of what they eat daily and when the allergic reaction occurs so that the patterns can be anaylzed to point out the appropirate food item that causes allergic reaction. You can get the Windows Build [Here](https://drive.google.com/file/d/1gyhzuyFO7h5PN0ijF7ozJkBLHiaNlc0S/view?usp=sharing).
 
 ## _Technology Used_
 - Sass
@@ -13,9 +12,6 @@ Diet Analyzer is an application that can be used by people which have some aller
 <img src="/images/light.jpg" height="400"/>  
 <br />
 <img src="/images/dark.jpg" height="400"/>
-
-## _Usage_
-
 
 ## _Future Scope_
 - Feature to analyze the daily diets of people
