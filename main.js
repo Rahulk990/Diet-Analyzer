@@ -1,11 +1,12 @@
 const { app, BrowserWindow, Tray, Menu } = require('electron')
+const path = require('path')
 
 let mainWindow, tray;
 let isQuiting = false;
 
-function createTray() {
+function createTray(iconPath) {
 
-  tray = new Tray('./dist/Diet-Analyzer/assets/food.jpg')
+  tray = new Tray(iconPath)
   tray.setToolTip('Diet Analyzer')
   tray.on('double-click', () => { mainWindow.show() })
 
@@ -23,23 +24,26 @@ function createTray() {
 
 function createWindow() {
 
+  const path = require('path');
+  const iconPath = path.join(__dirname, 'assets/food.jpg');
+  console.log(iconPath);
+
   // Basic Methods
   mainWindow = new BrowserWindow({
     width: 1000, height: 800,
     minWidth: 800, minHeight: 600,
     webPreferences: { nodeIntegration: true },
-    icon: './dist/Diet-Analyzer/assets/food.jpg',
+    icon: iconPath,
     title: "Diet Analyzer"
   })
   mainWindow.loadFile('./dist/Diet-Analyzer/index.html')
   mainWindow.on('closed', () => { mainWindow = null })
-  mainWindow.webContents.openDevTools();
 
   // Setting NULL MenuBar
   mainWindow.setMenu(null);
 
   // Creating Tray
-  createTray()
+  createTray(iconPath)
 
   // Configuring Options
   mainWindow.on('minimize', (event) => {
