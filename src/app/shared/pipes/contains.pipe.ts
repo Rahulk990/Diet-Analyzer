@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Item } from '../services/item-model.service';
+import { Item } from '../services/item.service';
 
 @Pipe({
   name: 'contains',

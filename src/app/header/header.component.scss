@@ -3,13 +3,13 @@
 .header {
   @include FlexCenter($justify: space-between);
 
-  padding: 0 10px;
   background-color: $primary-color;
   height: 60px;
+  width: 100%;
 
   #{&}__title {
     @include FlexCenter();
-    margin: 10px;
+    margin: 20px;
 
     p {
       padding-bottom: 5px;
@@ -22,7 +22,6 @@
 
   #{&}__search {
     flex: 1;
-    margin-left: 10px;
     text-align: center;
 
     input {
@@ -40,4 +39,22 @@
       outline: none;
     }
   }
+
+  button {
+    margin-right: 20px;
+  }
+}
+
+.mat-menu-trigger {
+  text-align: center;
+  padding: 0 5px;
+}
+
+button.mat-menu-item {
+  text-align: center;
+  padding: 0 5px;
+}
+
+.mat-menu-content:not(:empty) {
+  padding: 0;
 }

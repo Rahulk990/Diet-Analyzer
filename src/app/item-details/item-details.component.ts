@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Item, ItemModelService } from '../shared/services/item-model.service';
+import { Item, ItemService } from '../shared/services/item.service';
 
 @Component({
   selector: 'app-item-details',
@@ -19,17 +19,19 @@ export class ItemDetailsComponent implements OnInit {
   isModified: boolean = false;
 
   constructor(
-    private itemService: ItemModelService,
+    private itemService: ItemService,
     private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
-    this.itemDetails = { ...this.itemService.itemsArray[this.itemIndex] };
+    this.itemDetails = JSON.parse(
+      JSON.stringify(this.itemService.itemsArray[this.itemIndex])
+    );
   }
 
   onEdit(): void {
     this.isEditable = true;
-    this.originalItem = { ...this.itemDetails };
+    this.originalItem = JSON.parse(JSON.stringify(this.itemDetails));
   }
 
   onClose(): void {
@@ -38,13 +40,13 @@ export class ItemDetailsComponent implements OnInit {
 
   onCancel(): void {
     this.isEditable = false;
-    this.itemDetails = { ...this.originalItem };
+    this.itemDetails = JSON.parse(JSON.stringify(this.originalItem));
     this.originalItem = null;
   }
 
   onSave(): void {
     this.isEditable = false;
-    if (this.originalItem !== this.itemDetails) {
+    if (!Object.is(this.originalItem, this.itemDetails)) {
       this.isModified = true;
       this.itemService.updateItem(this.itemDetails, this.itemIndex);
     }

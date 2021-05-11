@@ -20,18 +20,18 @@ import { MatButtonModule } from '@angular/material/button';
 import { ContainsPipe } from './shared/pipes/contains.pipe';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { RouterModule } from '@angular/router';
-import { AuthService } from './shared/services/auth.service';
+import { AuthGuard } from './shared/auth.guard';
+import { MatMenuModule } from '@angular/material/menu';
 
 const routePaths = [
   {
     path: '',
     component: LandingPageComponent,
-    
   },
   {
     path: 'dashboard',
     component: CalenderComponent,
-    canActivate: [AuthService]
+    canActivate: [AuthGuard],
   },
 ];
 
@@ -57,6 +57,7 @@ const routePaths = [
     MatSnackBarModule,
     MatSlideToggleModule,
     MatButtonModule,
+    MatMenuModule,
     RouterModule.forRoot(routePaths),
   ],
   providers: [],

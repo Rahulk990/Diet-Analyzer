@@ -1,4 +1,25 @@
-<p>landing-page works!</p>
-<button (click)="onLogin()">
-    Click to Login
-</button>
+<div class="landing">
+
+    <div class="content">
+
+        <div class="form">
+            <p class="heading"> Welcome! </p>
+            <input type="text" placeholder="Enter Username" [(ngModel)]="username" [ngClass]="{'error':isError}" autofocus>
+            <p class="errorMessage" *ngIf="isError"> {{errorMessage}} </p>
+        </div>
+
+        <div class="buttons">
+
+            <button (click)="onLoad()">
+                Load User
+            </button>
+
+            <button (click)="onCreate()">
+                Create User
+            </button>
+
+        </div>
+
+    </div>
+
+</div>

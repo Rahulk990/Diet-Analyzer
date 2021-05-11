@@ -5,9 +5,18 @@
         <p>Diet Analyzer</p>
     </div>
 
-    <div class="header__search">
+    <div class="header__search" *ngIf="isLogin">
         <input type="text" placeholder="Search Food Item or Ingredient" [(ngModel)]="searchFilter"
             (ngModelChange)="onSubmit($event)">
+    </div>
+
+    <div *ngIf="isLogin">
+        <button mat-button [matMenuTriggerFor]="menu">Welcome {{username}}! <mat-icon>expand_more</mat-icon></button>
+        <mat-menu #menu="matMenu" xPosition="after">
+            <button mat-menu-item (click)="onLogout()">
+                <mat-icon>exit_to_app</mat-icon> <span style="font-weight: 500;">Logout</span>
+            </button>
+        </mat-menu>
     </div>
 
 </div>

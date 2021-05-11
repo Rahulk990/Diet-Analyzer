@@ -5,6 +5,7 @@
   overflow: auto;
   flex: 1;
   padding: 20px;
+  background-color: lighten($primary-color,5%);
 
   #{&}__itemContainer {
     @include FlexCenter($justify: flex-start, $align: flex-start);
